@@ -1,0 +1,3 @@
+﻿User-agent: *
+Allow: /
+Sitemap: https://gitjohnny90.github.io/built-to-be-used/sitemap.xml
