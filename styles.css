@@ -28,6 +28,12 @@
   --accent-deep: var(--connection-deep);
   --panel: var(--connection-panel);
 }
+.theme-course {
+  --accent: #1e3a5f;
+  --accent-deep: #142840;
+  --panel: #eef2f7;
+}
+.line-course { --line-accent: #1e3a5f; --line-panel: #eef2f7; }
 
 * { box-sizing: border-box; }
 
