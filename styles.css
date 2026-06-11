@@ -1,0 +1,329 @@
+/* Built to Be Used — shared stylesheet
+   Two brand lines (see products/_shared/DESIGN.md):
+   - Workshop:   deep green #2d5016 on warm tan #f5f0e8
+   - Connection: warm burgundy #7c2d3e on soft cream #faf6f0
+   No external fonts, no images. Georgia headings, Segoe UI body. */
+
+:root {
+  --ink: #1a1a1a;
+  --muted: #5c5c54;
+  --paper: #ffffff;
+  --rule: #e3ddd2;
+  --workshop: #2d5016;
+  --workshop-deep: #1f3a0e;
+  --workshop-panel: #f5f0e8;
+  --connection: #7c2d3e;
+  --connection-deep: #5e1f2e;
+  --connection-panel: #faf6f0;
+}
+
+/* Theme hooks — set on <body> */
+.theme-workshop {
+  --accent: var(--workshop);
+  --accent-deep: var(--workshop-deep);
+  --panel: var(--workshop-panel);
+}
+.theme-connection {
+  --accent: var(--connection);
+  --accent-deep: var(--connection-deep);
+  --panel: var(--connection-panel);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+h1, h2, h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.2;
+  color: var(--accent-deep, var(--ink));
+  margin: 0 0 0.5em;
+}
+h1 { font-size: 2.1rem; }
+h2 { font-size: 1.5rem; margin-top: 1.8em; }
+h3 { font-size: 1.15rem; margin-top: 1.4em; }
+
+p { margin: 0 0 1em; }
+
+a { color: var(--accent, var(--workshop)); }
+a:hover { color: var(--accent-deep, var(--workshop-deep)); }
+
+/* ---------- Header / nav ---------- */
+.site-header {
+  background: var(--accent, var(--workshop));
+  color: #fff;
+  padding: 0.7rem 1rem;
+}
+.site-header .inner {
+  max-width: 46rem;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.site-name {
+  font-family: Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+.site-name:hover { color: #fff; text-decoration: underline; }
+.site-header .tag {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* ---------- Layout ---------- */
+main {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+.lead {
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+
+/* ---------- Hero (index) ---------- */
+.hero { padding: 1.5rem 0 0.5rem; }
+.hero h1 { font-size: 2.3rem; }
+
+/* ---------- Product line sections (index) ---------- */
+.line-section {
+  margin-top: 2.5rem;
+  border-top: 4px solid var(--line-accent, var(--workshop));
+  padding-top: 1rem;
+}
+.line-workshop { --line-accent: var(--workshop); --line-panel: var(--workshop-panel); }
+.line-connection { --line-accent: var(--connection); --line-panel: var(--connection-panel); }
+.line-section h2 {
+  color: var(--line-accent);
+  margin-top: 0.2em;
+}
+.line-section .line-kicker {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--line-accent);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr));
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.card {
+  display: block;
+  background: var(--line-panel, var(--workshop-panel));
+  border: 1px solid var(--rule);
+  border-left: 5px solid var(--line-accent, var(--workshop));
+  border-radius: 6px;
+  padding: 1rem 1.1rem 1.1rem;
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(26, 26, 26, 0.12);
+  color: var(--ink);
+}
+.card h3 {
+  margin: 0 0 0.3em;
+  color: var(--line-accent, var(--workshop));
+  font-size: 1.08rem;
+}
+.card p {
+  margin: 0 0 0.6em;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+.card .price {
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+.card .go {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--line-accent, var(--workshop));
+}
+
+/* ---------- Article pages ---------- */
+article.guide ul, article.guide ol { padding-left: 1.4rem; }
+article.guide li { margin-bottom: 0.4em; }
+
+.checklist {
+  list-style: none;
+  padding-left: 0;
+}
+.checklist li {
+  padding-left: 1.6rem;
+  position: relative;
+  margin-bottom: 0.45em;
+}
+.checklist li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.note-box {
+  background: var(--panel);
+  border-left: 5px solid var(--accent);
+  border-radius: 4px;
+  padding: 0.9rem 1.1rem;
+  margin: 1.4rem 0;
+  font-size: 0.97rem;
+}
+.note-box p:last-child { margin-bottom: 0; }
+
+table.simple {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2rem 0;
+  font-size: 0.95rem;
+}
+table.simple th, table.simple td {
+  text-align: left;
+  padding: 0.45rem 0.6rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+table.simple th {
+  background: var(--panel);
+  color: var(--accent-deep);
+  font-family: Georgia, serif;
+}
+
+/* ---------- Product pitch block ---------- */
+.product-box {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-top: 6px solid var(--accent);
+  border-radius: 8px;
+  padding: 1.5rem 1.4rem;
+  margin: 2.5rem 0 1.5rem;
+}
+.product-box h2 {
+  margin-top: 0;
+  color: var(--accent-deep);
+}
+.product-box .price-line {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.buy-button {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.85rem 2.2rem;
+  border-radius: 6px;
+  margin: 0.8rem 0 0.3rem;
+  box-shadow: 0 2px 6px rgba(26, 26, 26, 0.2);
+}
+.buy-button:hover {
+  background: var(--accent-deep);
+  color: #fff;
+}
+.buy-note {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+/* ---------- Maker / honesty strip ---------- */
+.maker-note {
+  border-top: 1px solid var(--rule);
+  margin-top: 2.5rem;
+  padding-top: 1.2rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--panel, var(--workshop-panel));
+  border-top: 1px solid var(--rule);
+  padding: 1.5rem 1rem 2rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.site-footer .inner {
+  max-width: 46rem;
+  margin: 0 auto;
+}
+.site-footer h2 {
+  font-size: 1rem;
+  margin-top: 0;
+  color: var(--ink);
+}
+.site-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+  columns: 2;
+  column-gap: 2rem;
+}
+.site-footer li { margin-bottom: 0.35em; }
+
+/* ---------- Product landing pages ---------- */
+.product-page { padding-top: 1rem; }
+.product-page ul.tips { padding-left: 1.4rem; }
+.product-page ul.tips li { margin-bottom: 0.7em; }
+.buy-box {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-top: 6px solid var(--accent);
+  border-radius: 8px;
+  padding: 1.5rem 1.4rem;
+  margin: 2.5rem 0 1.5rem;
+}
+.buy-box h2 { margin-top: 0; color: var(--accent-deep); }
+.buy-box ul.inside { padding-left: 1.4rem; }
+.buy-box ul.inside li { margin-bottom: 0.35em; }
+.buy-box .price-line { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
+.buy-box .fine { font-size: 0.85rem; color: var(--muted); margin-top: 0.6rem; }
+.maker-line {
+  border-top: 1px solid var(--rule);
+  margin-top: 2rem;
+  padding-top: 1.2rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 480px) {
+  body { font-size: 1rem; }
+  h1 { font-size: 1.65rem; }
+  .hero h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.3rem; }
+  .site-footer ul { columns: 1; }
+  .buy-button { display: block; text-align: center; }
+}
